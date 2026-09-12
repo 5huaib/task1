@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 # Install system dependencies, zip extensions, and PostgreSQL drivers
 RUN apt-get update && apt-get install -y \
