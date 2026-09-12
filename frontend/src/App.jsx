@@ -82,7 +82,6 @@ export default function App() {
     }
   };
 
-  // Shared dark label style
   const labelStyle = {
     display: 'block',
     color: '#0f172a',
@@ -111,16 +110,17 @@ export default function App() {
   };
 
   return (
-    <div style={{ backgroundColor: '#0f172a', minHeight: '100vh', padding: '30px', fontFamily: 'system-ui, sans-serif' }}>
+    <div style={{ backgroundColor: '#0f172a', minHeight: '100vh', padding: '30px 20px', fontFamily: 'system-ui, sans-serif' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         
-        <h1 style={{ color: '#ffffff', textAlign: 'center', marginBottom: '30px' }}>
-          �� ZuperMoney — Retailer Recharge Module
+        {/* Clean Header without broken emojis */}
+        <h1 style={{ color: '#ffffff', textAlign: 'center', marginBottom: '30px', fontSize: '28px', lineHeight: '1.2' }}>
+          ZuperMoney — Retailer Recharge History
         </h1>
 
         {/* Form Card */}
         <div style={cardStyle}>
-          <h2 style={{ color: '#0f172a', marginTop: 0, marginBottom: '20px' }}>Perform New Recharge</h2>
+          <h2 style={{ color: '#0f172a', marginTop: 0, marginBottom: '20px', fontSize: '20px' }}>Perform New Recharge</h2>
           <form onSubmit={handleFormSubmit}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div>
@@ -189,7 +189,7 @@ export default function App() {
 
         {/* Filter Card */}
         <div style={cardStyle}>
-          <h2 style={{ color: '#0f172a', marginTop: 0, marginBottom: '20px' }}>Filter Recharges</h2>
+          <h2 style={{ color: '#0f172a', marginTop: 0, marginBottom: '20px', fontSize: '20px' }}>Filter Recharges</h2>
           <form onSubmit={handleApplyFilters}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '16px' }}>
               <div>
@@ -223,24 +223,26 @@ export default function App() {
                 />
               </div>
             </div>
-            <button
-              type="submit"
-              style={{
-                backgroundColor: '#475569',
-                color: '#ffffff',
-                border: 'none',
-                padding: '10px 20px',
-                borderRadius: '6px',
-                fontWeight: '600',
-                cursor: 'pointer'
-              }}
-            >
-              Apply Filters
-            </button>
+            <div style={{ textAlign: 'center' }}>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: '#475569',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '10px 24px',
+                  borderRadius: '6px',
+                  fontWeight: '600',
+                  cursor: 'pointer'
+                }}
+              >
+                Apply Filters
+              </button>
+            </div>
           </form>
         </div>
 
-        {/* Error Banner */}
+        {/* Error Notice */}
         {error && (
           <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fca5a5', color: '#991b1b', padding: '16px', borderRadius: '8px', marginBottom: '24px', textAlign: 'center', fontSize: '14px', lineHeight: '1.5' }}>
             <strong>{error}</strong>
