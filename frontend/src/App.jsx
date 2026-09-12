@@ -18,12 +18,13 @@ export default function App() {
     page: 1,
   });
 
-  // New Recharge Form state
+  // New Recharge Form state (with status included)
   const [formData, setFormData] = useState({
     retailer_id: '101',
     mobile_number: '',
     operator: 'Airtel',
     amount: '',
+    status: 'success',
   });
   const [formErrors, setFormErrors] = useState({});
   const [formSuccess, setFormSuccess] = useState('');
@@ -95,7 +96,7 @@ export default function App() {
       }
 
       setFormSuccess('Recharge successfully submitted!');
-      setFormData({ retailer_id: '101', mobile_number: '', operator: 'Airtel', amount: '' });
+      setFormData({ retailer_id: '101', mobile_number: '', operator: 'Airtel', amount: '', status: 'success' });
       fetchRecharges(); // Refresh list
     } catch (err) {
       setFormErrors({ general: 'Server connection failed.' });
@@ -153,6 +154,15 @@ export default function App() {
             <label style={{ display: 'block', fontSize: '14px', marginBottom: '5px' }}>Amount (₹)</label>
             <input type="number" name="amount" placeholder="e.g. 299" value={formData.amount} onChange={handleFormChange} required style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
             {formErrors.amount && <small style={{ color: 'red' }}>{formErrors.amount[0]}</small>}
+          </div>
+
+          <div>
+            <label style={{ display: 'block', fontSize: '14px', marginBottom: '5px' }}>Status</label>
+            <select name="status" value={formData.status} onChange={handleFormChange} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}>
+              <option value="success">Success</option>
+              <option value="failed">Failed</option>
+              <option value="pending">Pending</option>
+            </select>
           </div>
 
           <div style={{ gridColumn: '1 / -1' }}>
