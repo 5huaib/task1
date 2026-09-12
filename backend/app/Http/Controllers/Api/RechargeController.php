@@ -38,13 +38,16 @@ class RechargeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'retailer_id' => 'required|integer',
+            'retailer_id'   => 'required|integer',
             'mobile_number' => 'required|string|digits:10',
-            'operator' => 'required|string|in:Airtel,Jio,Vi,BSNL',
-            'amount' => 'required|numeric|min:1',
+            'operator'      => 'required|string|in:Airtel,Jio,Vi,BSNL',
+            'amount'        => 'required|numeric|min:1',
+            'status'        => 'nullable|string|in:success,failed,pending',
         ]);
 
-        $recharge = Recharge::create(array_merge($validated, ['status' => 'success']));
+        $status = $request->input('status', 'success');
+
+        $recharge = Recharge::create(array_merge($validated, ['status' => $status]));
 
         return response()->json($recharge, 201);
     }
