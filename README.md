@@ -20,7 +20,6 @@ The application allows retailers to **view, filter, paginate, and submit mobile 
 
 * **React**
 * **Vite**
-* **Axios**
 * JavaScript
 
 ### Database
@@ -44,7 +43,8 @@ Recharge records can be dynamically filtered directly through MySQL queries usin
 
 * 10 recharge records per page
 * Pagination handled by the Laravel backend
-* Returns pagination metadata and total record count
+* Returns pagination metadata
+* Returns total record count
 
 ### 📱 Mock Recharge Submission
 
@@ -154,13 +154,7 @@ DB_USERNAME=root
 DB_PASSWORD=your_mysql_password
 ```
 
-Replace:
-
-```text
-your_mysql_password
-```
-
-with your local MySQL password.
+Replace `your_mysql_password` with your local MySQL password.
 
 ---
 
@@ -177,6 +171,8 @@ This will:
 * Create the required database tables
 * Run all migrations
 * Insert fake recharge records for testing
+
+> **Note:** `migrate:fresh` will drop all existing tables in the configured database before recreating them. Use it only with a development/test database.
 
 ---
 
@@ -271,14 +267,14 @@ Creates a new recharge record.
 
 ```bash
 curl -X POST http://127.0.0.1:8000/api/recharges \
--H "Content-Type: application/json" \
--d '{
-  "retailer_id": 1,
-  "mobile_number": "9876543210",
-  "operator": "Airtel",
-  "amount": 299,
-  "status": "success"
-}'
+  -H "Content-Type: application/json" \
+  -d '{
+    "retailer_id": 1,
+    "mobile_number": "9876543210",
+    "operator": "Airtel",
+    "amount": 299,
+    "status": "success"
+  }'
 ```
 
 ---
@@ -423,6 +419,8 @@ Developed as part of the **ZuperMoney Developer Intern Take-Home Task**.
 
 ---
 
-## ⭐ If you found this project useful
+## ⭐ If You Found This Project Useful
 
-Feel free to **star ⭐ the repository** and explore the code to learn more about building a full-stack application using **Laravel, React, MySQL, and REST APIs**.
+Feel free to **star ⭐ the repository** and explore the code to learn more about building a full-stack application using:
+
+**Laravel · React · MySQL · REST APIs**
